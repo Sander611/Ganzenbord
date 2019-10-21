@@ -1,0 +1,11 @@
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\bin\Debug\netcoreapp3.0\Spel_Ganzenbord.exe
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\bin\Debug\netcoreapp3.0\Spel_Ganzenbord.deps.json
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\bin\Debug\netcoreapp3.0\Spel_Ganzenbord.runtimeconfig.json
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\bin\Debug\netcoreapp3.0\Spel_Ganzenbord.runtimeconfig.dev.json
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\bin\Debug\netcoreapp3.0\Spel_Ganzenbord.dll
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\bin\Debug\netcoreapp3.0\Spel_Ganzenbord.pdb
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\obj\Debug\netcoreapp3.0\Spel_Ganzenbord.csprojAssemblyReference.cache
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\obj\Debug\netcoreapp3.0\Spel_Ganzenbord.AssemblyInfoInputs.cache
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\obj\Debug\netcoreapp3.0\Spel_Ganzenbord.AssemblyInfo.cs
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\obj\Debug\netcoreapp3.0\Spel_Ganzenbord.dll
+C:\Users\Sander\source\repos\Spel_Ganzenbord\Spel_Ganzenbord\obj\Debug\netcoreapp3.0\Spel_Ganzenbord.pdb
