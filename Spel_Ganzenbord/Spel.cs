@@ -6,6 +6,10 @@ namespace Spel_Ganzenbord
 {
     class Spel
     {
+        public event updateMessageDelegate updateMessage;
+        public event readMessageDelegate readMessage;
+        public event waitForKeyMessageDelegate waitForKey;
+
         public List<Spelers> spelerLijst = new List<Spelers>();
         public List<Spelers> spelersInPut = new List<Spelers>();
 
@@ -14,13 +18,13 @@ namespace Spel_Ganzenbord
 
         public bool winnaarBekend = false;
 
-        public void spelersMaken(int aantalSpelers)
+        public void SpelersMaken(int aantalSpelers)
         {
 
             for (int x = 1; x <= aantalSpelers; x++)
             {
-                Console.WriteLine("Voer een Naam in: ");
-                string naam = Console.ReadLine();
+                updateMessage("Voer een Naam in: ");
+                string naam = readMessage();
                 Spelers SpelerInstance = new Spelers(naam);
                 spelerLijst.Add(SpelerInstance);
             }
@@ -28,41 +32,50 @@ namespace Spel_Ganzenbord
 
 
 
-        public void spelStarten()
+        public void SpelStarten()
         {
             while (winnaarBekend == false)
             {
                 foreach (Spelers speler in spelerLijst)
                 {
                     if (speler.inPut == false && speler.beurtenOverslaan.Count == 0){
-                        Console.WriteLine("Speler " + Convert.ToString(speler.Naam) + " is aan zet. En staat momenteel op vakje: " + Convert.ToString(speler.Positie) + ".");
+
+                        updateMessage("Speler " + Convert.ToString(speler.Naam) + " is aan zet. En staat momenteel op vakje: " + Convert.ToString(speler.Positie) + ".");
+
                         int gegooideWaarde = dobbelsteen.dobbelen();
                         speler.stappenZetten(gegooideWaarde);
-                        Console.WriteLine("Speler " + Convert.ToString(speler.Naam) + " gooide " + gegooideWaarde + " en is hiermee beland op vakje " + Convert.ToString(speler.Positie) + ".");
-                        Console.WriteLine(spelbord.checkSpel(speler, gegooideWaarde, ref winnaarBekend, ref spelersInPut));
+
+                        updateMessage("Speler " + Convert.ToString(speler.Naam) + " gooide " + gegooideWaarde + " en is hiermee beland op vakje " + Convert.ToString(speler.Positie) + ".");
+                        updateMessage(spelbord.checkSpel(speler, gegooideWaarde, ref winnaarBekend, ref spelersInPut));
+
                         if (spelersInPut.Count > 1)
                         {
-                            spelersVerwijderen();
+                            SpelersVerwijderen();
                         }
                         if (winnaarBekend == true) 
                         {
                             break;
                         }
-                        Console.WriteLine("Druk ergens op om je beurt te eindigen");
-                        Console.WriteLine(" ");
-                        Console.ReadKey();
+
+                        updateMessage("Druk ergens op om je beurt te eindigen");
+                        updateMessage(" ");
+                        waitForKey();
                     }
 
                     else{
                         if (speler.inPut){
-                            Console.WriteLine("Speler "+ Convert.ToString(speler.Naam) +" bevindt zich in de put en moet wachten op een andere speler tot hij/zij gevonden wordt!");
-                            Console.WriteLine(" ");
+
+                            updateMessage("Speler "+ Convert.ToString(speler.Naam) +" bevindt zich in de put en moet wachten op een andere speler tot hij/zij gevonden wordt!");
+                            updateMessage(" ");
+
                             continue;
                         }
                         else {
                             List<string> currBeurtenOverslaan = speler.beurtenOverslaan;
-                            Console.WriteLine("Speler " + Convert.ToString(speler.Naam) + " moet nog "+ currBeurtenOverslaan.Count +" beurt wachten!");
-                            Console.WriteLine(" ");
+
+                            updateMessage("Speler " + Convert.ToString(speler.Naam) + " moet nog "+ currBeurtenOverslaan.Count +" beurt wachten!");
+                            updateMessage(" ");
+
                             currBeurtenOverslaan.RemoveAt(currBeurtenOverslaan.Count - 1);
                             speler.beurtenOverslaan = currBeurtenOverslaan;
                             continue;
@@ -76,7 +89,7 @@ namespace Spel_Ganzenbord
 
         }
 
-        public void spelersVerwijderen()
+        public void SpelersVerwijderen()
         {
             foreach (Spelers obj in spelersInPut)
             {

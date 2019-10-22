@@ -9,15 +9,32 @@ namespace Spel_Ganzenbord
         static void Main(string[] args)
         {
             Spel nieuwspel = new Spel();
-            Console.WriteLine("Hoeveel spelers doen er mee?: ");
-            string AantalSpelers = Console.ReadLine();
+            nieuwspel.updateMessage += update_Message;
+            nieuwspel.waitForKey += wait_For_Key_Message;
+            nieuwspel.readMessage += read_Message;
 
-            nieuwspel.spelersMaken(int.Parse(AantalSpelers));
+            update_Message("Hoeveel spelers doen er mee?: ");
+            string AantalSpelers = read_Message();
 
-            nieuwspel.spelStarten();
+            nieuwspel.SpelersMaken(int.Parse(AantalSpelers));
+
+            nieuwspel.SpelStarten();
 
         }
 
+        private static void update_Message(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        private static string read_Message()
+        {
+            return Console.ReadLine();
+        }
+        private static void wait_For_Key_Message()
+        {
+            Console.ReadKey();
+        }
 
         
 
